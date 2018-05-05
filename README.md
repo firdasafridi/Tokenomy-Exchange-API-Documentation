@@ -150,6 +150,7 @@ Parameter:
 | Parameter  | Required? | Description | Value | Default |
 | ------------- | ------------- |  ------------- |  ------------- |  ------------- |
 | pair | Yes | market pair | ten_btc, eth_btc, ... | -  |
+| order_method | Yes | order method | *market* or *limit* | limit  |
 | type | Yes | buy or sell | buy / sell | - |
 | price | Yes (limit order) | order price | numerical | - |
 | btc | Yes (buy market order) | amount of btc to trade | numerical | - |

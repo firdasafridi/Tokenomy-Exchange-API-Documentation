@@ -2,13 +2,18 @@
 # API DOCUMENTATION FOR TOKENOMY EXCHANGE
 
 ## PUBLIC API
-It doesn't need an API key to call Public API. You can call a simple GET request or open it directly from the browser.
+You don't need an API key to call Public API. It can be called with a simple GET request or open it directly from the browser.
 
 Market Last Prices:  https://exchange.tokenomy.com/api/prices
+
 All Pairs Summary:  https://exchange.tokenomy.com/api/summaries
+
 Ticker TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/ticker
+
 Trades TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/trades
+
 Depth TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/depth
+
 
 ## PRIVATE API
 
@@ -23,16 +28,16 @@ There are 3 different permissions that can be applied to API Key: view, trade an
 | withdraw | withdrawCoin  |
 
 ### Authentication
-Authorization is done by sending data via HTTP header with the following variable:
+Authentication is done by sending the data via HTTP header with the following variables:
 
 Key — API key. Example: 14B0C9D6-UG71XOID-SH4IB5VQ-A9LK3YVZ-4HFR8X2T
-Sign — POST data (?param=val\&param1=val1) encrypted with method HMAC-SHA512 using secret key
+Sign — POST data "param1=val1&param2=val2" encrypted with method HMAC-SHA512 using the secret key
 
-Send request to this URL: https://exchange.tokenomy.com/tapi
+Send the request to this URL: https://exchange.tokenomy.com/tapi
 
 All requests must be sent with POST.
 
-For each request you have to include these variables to make the call valid: *nonce* and *method*. 
+Every request need to have at least these variables: *nonce* and *method*. 
 
 *nonce* :  
     An increment integer. For example if the last request's nonce is 1000, the next request should be 1001 or a larger number. To learn more about nonce http://en.wikipedia.org/wiki/Cryptographic_nonce  
@@ -40,7 +45,7 @@ For each request you have to include these variables to make the call valid: *no
 *method* :  
 	Specify the method you want to call. 
 
-To get the better picture on how to pass the authentication, you can check PHP function on the last page of this documentation.
+To get the better picture on how to pass the authentication, you can check PHP function on the bottom of this documentation.
 
 ### Responses
 
@@ -48,7 +53,7 @@ All responses are returned with JSON format. See example below.
 
 Response format if a request is successfully executed:
 
-```
+```json
 {
 	"success":1,
 	"return":{
@@ -59,7 +64,7 @@ Response format if a request is successfully executed:
 
 Response format if a request returns an error:
 
-```
+```json
 {
 	"success":0,
 	"error":"some error message"
@@ -124,8 +129,6 @@ Response example:
                "success_time":"1525018950"
             }
          ],
-         "ltc":[
-         ],
          ... /* other coins */
       },
       "deposit":{
@@ -137,8 +140,6 @@ Response example:
                "success_time":"1525018450"
             }
          ],
-         "ltc":[
-         ],
          ... /* other coins */
       }
    }
@@ -147,7 +148,7 @@ Response example:
 
 #### trade
 
-To create trade orders
+To create a trade order
 
 Parameter:
 
@@ -182,7 +183,7 @@ Response example:
 
 #### tradeHistory
 
-To get history of executed trades.
+To get the history of executed trades.
 
 Parameter:
 
@@ -413,11 +414,11 @@ Response example:
 
 #### withdrawCoin
 
-This method is for withdrawing assets.
+This method is for transfering out assets.
 
 To be able to use this method you need to enable *withdraw* permission when you generate the API Key. Otherwise you will get “No permission” error.
 
-You also need to prepare a *Callback URL*. *Callback URL* is a URL that our system will call to verify your withdrawal requests, you can consider it like a 2FA verification. Various parameters will be sent to the *Callback URL*. From your server side, check the parameters if the request is valid. If all data is correct, print out a string “ok”  (without quotes). If we don't receive “ok” (without quotes) response, we will reject the request. 
+You also need to prepare a *Callback URL*. *Callback URL* is a URL that our system will call to verify your withdrawal requests, you can consider it as like a 2FA verification. Various parameters will be sent to the *Callback URL*. Compare the parameters we send to the data in your database. If all data is correct, print out a string "ok"  (without quotes). If we don't receive "ok" (without quotes) response, we will reject the request. 
 
 Callback call will be sent through a POST request, with 5 seconds connection timeout.
 
@@ -448,7 +449,7 @@ Response example:
 }
 ```
 
-Callback parameter:
+Callback parameters:
 
 | Parameter  | Description | 
 | ------------- | ------------- |
@@ -456,7 +457,7 @@ Callback parameter:
 | withdraw_currency | currency from your request |
 | withdraw_address | withdraw_address from your request |
 | withdraw_amount | withdraw_amount from your request |
-| withdraw_memo | withdraw memo from your request (if any) |
+| withdraw_memo | withdraw memo from your request |
 | requester_ip | ip address of the request |
 | request_date | time the request submitted |
 

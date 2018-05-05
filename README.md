@@ -4,16 +4,11 @@
 ## PUBLIC API
 You don't need an API key to call Public API. It can be called with a simple GET request or open it directly from the browser.
 
-Market Last Prices:  https://exchange.tokenomy.com/api/prices
-
-All Pairs Summary:  https://exchange.tokenomy.com/api/summaries
-
-Ticker TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/ticker
-
-Trades TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/trades
-
-Depth TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/depth
-
+- Market Last Prices:  https://exchange.tokenomy.com/api/prices
+- All Pairs Summary:  https://exchange.tokenomy.com/api/summaries
+- Ticker TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/ticker
+- Trades TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/trades
+- Depth TEN/BTC:  https://exchange.tokenomy.com/api/ten_btc/depth
 
 ## PRIVATE API
 
@@ -30,8 +25,8 @@ There are 3 different permissions that can be applied to API Key: view, trade an
 ### Authentication
 Authentication is done by sending the data via HTTP header with the following variables:
 
-Key — API key. Example: 14B0C9D6-UG71XOID-SH4IB5VQ-A9LK3YVZ-4HFR8X2T
-Sign — POST data "param1=val1&param2=val2" encrypted with method HMAC-SHA512 using the secret key
+- Key — API key. Example: 14B0C9D6-UG71XOID-SH4IB5VQ-A9LK3YVZ-4HFR8X2T
+- Sign — POST data "param1=val1&param2=val2" encrypted with method HMAC-SHA512 using the secret key
 
 Send the request to this URL: https://exchange.tokenomy.com/tapi
 
